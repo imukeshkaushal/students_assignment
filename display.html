@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button><a href="index.html">Add Student's Data</a></button>
+    <table id = "customers">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
+<script>
+    var data = JSON.parse(localStorage.getItem("student_data"));
+    console.log(data)
+
+    data.map(function(elem,index){
+        var row = document.createElement("tr");
+        var col1 = document.createElement("td");
+        col1.innerText = elem.name
+        var col2 = document.createElement("td");
+        col2.innerText = elem.number
+        var col3 = document.createElement("td");
+        col3.innerText = elem.city
+
+        row.append(col1,col2,col3);
+        document.querySelector("tbody").append(row);
+
+    })
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Data</title>
+</head>
+<body>
+    <form action="" id = "form">
+        <input type="text" placeholder="Student's Name" id = "name">
+        <input type="text" placeholder="Student's Number" id="number">
+        <input type="text" placeholder="Student's City" id="city">
+        <input  type="submit">
+        <button><a href="display.html">Show Student's Data</a></button>
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",myForm);
+    var studentArr = JSON.parse(localStorage.getItem("student_data")) || [];
+    function myForm() {
+        event.preventDefault();
+        let studentObj = {
+            name : document.querySelector("#name").value,
+            number : document.querySelector("#number").value,
+            city:document.querySelector("#city").value,
+        };
+        studentArr.push(studentObj);
+        console.log(studentArr);
+        localStorage.setItem("student_data",JSON.stringify(studentArr));
+    }
+
+</script>
